@@ -1,15 +1,13 @@
-const genres = require('./routes/genres');
-const mongoose = require('mongoose');
+const winston = require('winston');
 const express = require('express');
 const app  = express();
 
-app.use(express.json());
-app.use('/api/genres', genres);
-
-mongoose.connect('mongodb://localhost:27017/movielib', { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(console.log('DB Connected'))
-    .catch(err=>console.error('Connection failed!',err));
-
+require('./startup/logging')();
+require('./startup/routes')(app);
+require('./startup/db')();
+require('./startup/config')();
+require('./startup/validation')();
+require('./startup/prod')(app);
 
 const port = process.env.PORT || 3000;
-app.listen(port, ()=> console.log(`Server running on localhost:${port}`));
+app.listen(port, ()=> winston.info(`Server running on localhost:${port}`));
