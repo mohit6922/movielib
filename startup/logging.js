@@ -1,6 +1,6 @@
 const config  = require('config');
 const winston = require('winston');
-require('winston-mongodb');
+// require('winston-mongodb');
 require('express-async-errors');
 
 module.exports = function(){
@@ -8,7 +8,7 @@ module.exports = function(){
         transports: [
             new winston.transports.Console(),
             new winston.transports.File({ filename: 'logfile.log'}),
-            new winston.transports.MongoDB({db: config.get('db'), options: { useUnifiedTopology: true }})
+            // new winston.transports.MongoDB({db: config.get('db'), options: { useUnifiedTopology: true }})
         ]
     });
     winston.exceptions.handle(new winston.transports.File({filename: 'uncaught.log'}));
