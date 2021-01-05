@@ -7,5 +7,5 @@ mongoose.set('useCreateIndex', true);
 
 module.exports = function(){
     mongoose.connect(config.get('db'), { useUnifiedTopology: true })
-    .then(winston.info('Connected to Database'));  
+    .then(winston.info('Connected to Database'));
 }

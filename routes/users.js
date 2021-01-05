@@ -17,7 +17,7 @@ router.get('/', auth, async(req, res)=>{
 
     res.send(users);
 });
-router.post('/', auth, async(req, res)=>{
+router.post('/', async(req, res)=>{
     const { value, error } = validate(req.body);
     if(error) return res.status(400).send('Invalid Data');
 
