@@ -7,10 +7,11 @@ module.exports = function(){
         transports: [
             new winston.transports.Console(),
             new winston.transports.File({ filename: 'logfile.log'}),
-            new winston.transports.MongoDB({db: 'mongodb://localhost:27017/movielib', options: { useUnifiedTopology: true }})
+            new winston.transports.MongoDB({db: config.get('movielib_db'), options: { useUnifiedTopology: true }})
         ]
     });
     winston.exceptions.handle(new winston.transports.File({filename: 'uncaught.log'}));
+    winston.exceptions.handle(new winston.transports.Console());
     // winston.rejections.handle(new winston.transports.File({ filename: 'rejection.log' })); //Not working
     //Walkaround solution below
     process.on('unhandledRejection', (ex)=>{
