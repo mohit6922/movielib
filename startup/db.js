@@ -6,6 +6,6 @@ mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 
 module.exports = function(){
-    mongoose.connect(config.get('movielib_db'), { useUnifiedTopology: true })
+    mongoose.connect(config.get('db'), { useUnifiedTopology: true })
     .then(winston.info('Connected to Database'));  
 }
