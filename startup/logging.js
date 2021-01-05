@@ -1,3 +1,4 @@
+const config  = require('config');
 const winston = require('winston');
 require('winston-mongodb');
 require('express-async-errors');
