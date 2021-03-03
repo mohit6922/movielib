@@ -1,4 +1,4 @@
 {
-    "jwtPrivateKey": "",
-    "db": ""
+    "jwtPrivateKey": "12345",
+    "db": "mongodb+srv://movielib_user:movielib_pass@ms-cluster.x0l6i.mongodb.net/movielib"
 }

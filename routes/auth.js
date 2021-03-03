@@ -19,7 +19,7 @@ router.post('/', async(req, res)=>{
     let user = await User.findOne({email: value.email});
     if(!user) return res.status(400).send('Email/ Password Incorrect!');
     
-    const result = await bcrypt.compare(value.password, user.password);
+    const result = await bcrypt.compare(value.password, user.password); 
     if(!result) return res.status(400).send('Email/ Password Incorrect!');
 
     const token = user.getAuthToken();
